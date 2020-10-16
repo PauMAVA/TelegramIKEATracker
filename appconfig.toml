@@ -1,0 +1,10 @@
+[telegram]
+    token = "TBD"
+    user = "TBD"
+
+[database]
+    address = "localhost"
+    port = 3306
+    username = "user"
+    password = "changeme.2020"
+    db = "ikea"
