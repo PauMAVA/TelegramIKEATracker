@@ -7,6 +7,12 @@ class TelegramConfig:
         self.bot_token = bot_token
         self.bot_username = bot_username
 
+    def token(self):
+        return self.bot_token
+
+    def user(self):
+        return self.bot_username
+
 
 class DatabaseConfig:
 
@@ -17,12 +23,33 @@ class DatabaseConfig:
         self.password = password
         self.database = database
 
+    def address(self):
+        return self.address
+
+    def port(self):
+        return self.port
+
+    def user(self):
+        return self.user
+
+    def password(self):
+        return self.password
+
+    def database(self):
+        return self.database
+
 
 class Config:
 
-    def __init__(self, telegram, database):
+    def __init__(self, telegram: TelegramConfig, database: DatabaseConfig):
         self.telegram = telegram
         self.database = database
+
+    def telegram(self):
+        return self.telegram
+
+    def database(self):
+        return self.database
 
 
 current_path = None
@@ -36,6 +63,8 @@ def get_config(path):
 
 
 def refresh_config(path):
+    global current_config
+    global current_path
     current_config = parser.parse_config(path)
     if current_config is not None:
         current_path = path
